@@ -1,4 +1,4 @@
-<?php
+s<?php
 
 /*
 |--------------------------------------------------------------------------
@@ -12,6 +12,10 @@
 */
 
 Route::get('/', 'HomeController@index');
+
+Route::get('/pay', function(){
+	return view('pay');
+});
 
 Route::group(array('prefix' => 'product'), function () {
 

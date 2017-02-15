@@ -44,7 +44,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Colombia</a>
+          <a class="navbar-brand" href="{{ url('/') }}">Colombia</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
@@ -62,6 +62,14 @@
               </ul>
             </li>
           </ul>
+          <a href="javascript:;" class="navbar-brand navbar-right">
+            Total Pedido: $<span id="totalBuy">0</span>
+          </a>
+          <form class="navbar-form navbar-right">
+            <button type="button" id="payTotal" class="btn btn-success" data-toggle="modal" data-target="#payModal">
+              Pagar
+            </button>
+          </form>
         </div><!--/.nav-collapse -->
       </div>
     </nav>
@@ -70,6 +78,33 @@
       @yield('content')
     </div><!-- /.container -->
 
+    <!-- Modal -->
+    <div class="modal fade bs-example-modal-sm" id="payModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Generar Pago</h4>
+          </div>
+          <div class="modal-body">
+            <div class="row">
+              <div class="col-md-12">
+                <h4 class="text-center">Hamburguesas Colombia</h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-2"><strong>Cant.</strong></div>
+              <div class="col-md-7"><strong>Nombre</strong></div>
+              <div class="col-md-3"><strong>Valor</strong></div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+            <a href="{{ url('pay') }}" class="btn btn-primary">Aceptar</a>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
@@ -79,6 +114,63 @@
     <script src="{{ asset('dist/js/bootstrap.min.js') }}"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="{{ asset('assets/js/ie10-viewport-bug-workaround.js') }}"></script>
+
+    <script type="text/javascript">
+
+      $( function() {
+
+        var functionsMaster = {
+          calculateTotalBuy: function(){
+
+            var totalBuy = 0;
+
+            $.each(localStorage, function(i, index){
+              var productBuy = JSON.parse(index);
+              totalBuy = totalBuy + productBuy.totalPrice;
+            });
+
+            $("#totalBuy").text(totalBuy);
+          },
+          payModalShow: function(){
+
+            var body = $(this).find('.modal-body');
+            body.find(".price-content").remove();
+
+            $.each(localStorage, function(i, product){
+
+              var productBuy = JSON.parse(product);
+
+              functionsMaster.addRowItemModal(body, productBuy.cant, productBuy.name, '$'+ (parseInt(productBuy.cant) * parseInt(productBuy.priceUnitary)));
+
+              $.each(productBuy.accompaniments, function(j, accompaniment){
+                functionsMaster.addRowItemModal(body, accompaniment.cant, accompaniment.name, '$'+ (parseInt(accompaniment.cant) * parseInt(accompaniment.priceUnitary)));
+              });
+
+            });
+
+            functionsMaster.addRowItemModal(body, '', '<p class="text-right"><strong>Neto</strong></p>', '$'+ parseInt(parseInt($("#totalBuy").text()) * 0.81));
+            functionsMaster.addRowItemModal(body, '', '<p class="text-right"><strong>IVA</strong></p>', '$'+ parseInt(parseInt($("#totalBuy").text()) * 0.19));
+            functionsMaster.addRowItemModal(body, '', '<p class="text-right"><strong>Total</strong></p>', '$'+ $("#totalBuy").text());
+
+          },
+          addRowItemModal: function(obj, val1, val2, val3){
+
+            obj.append('<div class="row price-content">\
+              <div class="col-md-2">'+ val1 +'</div>\
+              <div class="col-md-7">'+ val2 +'</div>\
+              <div class="col-md-3">'+ val3 +'</div>\
+            </div>');
+
+          }
+        }
+
+        functionsMaster.calculateTotalBuy();
+
+        $('#payModal').on('shown.bs.modal', functionsMaster.payModalShow);
+
+      });
+      
+    </script>
 
     @yield('scripts')
 
