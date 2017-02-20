@@ -1,22 +1,21 @@
 @extends('master')
 
 @section('content')
-	<div class="starter-template">
-		<div class="row">
-			@foreach($typeProducts as $type)
-				<div class="col-sm-6 col-md-4">
-					<div class="thumbnail">
-						<img src="{{ url($type['image']) }}" alt="...">
-						<div class="caption">
-							<h3>{{ $type['name'] }}</h3>
-							<p>...</p>
-							<p>
-								<a href="{{ route('product', $type['id']) }}" class="btn btn-default" role="button">Ver Mas</a>
-							</p>
-						</div>
-					</div>
-				</div>
+    <div class="row container cats">
+        <div class="brands col-lg-12">
+			<?php $tempKey = 0; ?>
+			@foreach($typeProducts as $key => $type)
+				@if($key == 0 || ($key % 4 == 0))
+	            	<div class="row">
+	            	<?php $tempKey = $key; ?>
+        		@endif
+	                <div class="brand-image col-lg-3 col-md-3 col-sm-6" data-scroll-reveal="enter top and move 10px over 1s">
+	                    <a href="{{ route('product', $type['id']) }}"><img src="{{ url($type['image']) }}" alt="Brand Image"/></a>
+	                </div>
+                @if(($tempKey + 3) == $key || count($typeProducts) == ($key + 1))
+	            	</div>
+            	@endif
 			@endforeach
-		</div>
-	</div>
+        </div>
+    </div>
 @stop

@@ -1,22 +1,29 @@
 @extends('master')
 
 @section('content')
-	<div class="starter-template">
-		<div class="row">
-			@foreach($products as $product)
-				<div class="col-sm-6 col-md-4">
-					<div class="thumbnail">
-						<img src="{{ url($product['image']) }}" alt="...">
-						<div class="caption">
-							<h3>{{ $product['name'] }}</h3>
-							<p>...</p>
-							<p>
-								<a href="{{ route('product.buy', $product['id']) }}" class="btn btn-default" role="button">Comprar</a>
-							</p>
-						</div>
-					</div>
-				</div>
-			@endforeach
-		</div>
-	</div>
+    <!-- Owl carousel -->
+    <div class="myowl">
+        <div class="carousel-block unshow">
+            &nbsp;
+        </div>
+
+        @foreach($products as $product)
+	        <div class="carousel-block">
+	            <a href="{{ route('product.buy', $product['id']) }}"><img src="http://placehold.it/570x330" alt="Product Image"/></a>
+	            <div class="carousel-content">
+	                <h3><a href="{{ route('product.buy', $product['id']) }}">{{ $product['name'] }}</a></h3>
+	                <hr>
+	                <p class="description">{{ $product['description'] }}</p>
+	                <div class="right-block">
+	                    <p>${{ $product['price'] }}</p>
+	                    <a class="text-hide" href="shopping-cart.html">Agregar</a>
+	                </div>
+	            </div>
+	        </div>
+        @endforeach
+
+        <div class="carousel-block unshow">
+            &nbsp;
+        </div>
+    </div><!-- /myowl -->
 @stop

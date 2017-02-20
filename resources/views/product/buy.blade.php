@@ -6,54 +6,54 @@
 @stop
 
 @section('content')
-	<div class="starter-template">
-		<div class="row">
-			<div class="col-sm-6 col-md-4">
-				<div class="thumbnail">
-					<img src="{{ url($product['image']) }}" alt="...">
-					<div class="caption">
-						<h3>{{ $product['name'] }}</h3>
-						<p>${{ $product['price'] }}</p>
-						<p>
-							<div class="form-group">
-								<input type="number" class="form-control input-price" id="product" data-id="{{ $product['id'] }}" data-price="{{ $product['price'] }}" min="0" value="0" style="margin-left: 40%; width: 20%;">
-							</div>
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-6 col-md-4">
-				@foreach($accompaniments as $accompaniment)
-					<div class="media">
-						<div class="media-left">
-							<img class="media-object" src="{{ url($accompaniment['image']) }}" width="64" height="64" alt="...">
-						</div>
-						<div class="media-body">
-							<h4 class="media-heading">{{ $accompaniment['name'] }}</h4>
-							${{ $accompaniment['price'] }}
-						</div>
-						<div class="media-right">
-							<div class="form-group">
-								<input type="number" class="form-control input-price" id="accompaniment" data-name="{{ $accompaniment['name'] }}" data-id="{{ $accompaniment['id'] }}" data-price="{{ $accompaniment['price'] }}" min="0" value="0" style="width: 64px;">
-							</div>
-						</div>
-					</div>
-				@endforeach
-			</div>
-			<div class="col-sm-6 col-md-4">
-				<div class="thumbnail">
-					<div class="caption">
-						<h3>Valor</h3>
-						<p><span id="totalPrice">$0</span></p>
-						<p>
-							<!-- <a href="{{ url('/') }}" class="btn btn-primary" role="button">Agregar Mas</a> -->
-							<a href="{{ url('/') }}" class="btn btn-default" id="cancelBuy" role="button">Cancelar</a>
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+
+<section class="page-title container">
+    <h1>{{ $product['name'] }}</h1>
+    <hr>
+</section><!--/page-title -->
+
+<section class="product-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-12 col-sm-12">
+                <div class="gallery">
+                    <img id="gallery_main_img" src="http://placehold.it/480x400" alt="Foto del producto"/>
+                </div>
+                <input type="checkbox" style="display: none;" checked class="form-control input-price" id="product" data-id="{{ $product['id'] }}" data-price="{{ $product['price'] }}">
+            </div>
+
+            <div class="col-lg-6 col-md-12 col-sm-12">
+                <div class="brief-description">
+                    <p>{{ $product['description'] }}</p>
+                    <div class="info-cart">
+                        <p class="precio">${{ $product['price'] }}</p>
+                        <a class="text-hide pull-right" href="shopping-cart.html">Add to cart</a>
+						<h3>Adicionales</h3>
+						<?php $tempKey = 0; ?>
+						@foreach($accompaniments as $key => $accompaniment)
+							@if($key == 0 || ($key % 5 == 0))
+				            	<div class="col-lg-6">
+				            	<?php $tempKey = $key; ?>
+			        		@endif
+								<div class="checkbox checkbox-warning">
+			                        <input id="{{ $accompaniment['id'] }}" data-name="{{ $accompaniment['name'] }}" data-id="{{ $accompaniment['id'] }}" data-price="{{ $accompaniment['price'] }}" type="checkbox" class="styled input-price"><label for="{{ $accompaniment['id'] }}">{{ $accompaniment['name'] }} ${{ $accompaniment['price'] }}</label>
+			                    </div>
+			                @if(($tempKey + 4) == $key || count($accompaniments) == ($key + 1))
+				            	</div>
+			            	@endif
+						@endforeach
+                    </div>
+                    <div class="accion">
+                        <hr>
+                        <div class="regresar"><a href="{{ URL::previous() }}">Regresar</a></div>
+                        <div class="agregar"><a href="{{ url('pay') }}" id="addProduct">Agregar <span id="totalPrice">${{ $product['price'] }}</span></a></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!--/container-->
+</section><!--/product-page-->
+
 @stop
 
 @section('scripts')
@@ -63,12 +63,11 @@
 
 			var variablesBuy = {
 				productId: "{{ $product['id'] }}",
-				totalPrice: 0,
+				totalPrice: parseInt("{{ $product['price'] }}"),
 				localStorageProduct: {
-					cant: 0,
+					cant: 1,
 					name: "{{ $product['name'] }}",
 					accompaniments: {},
-					totalPrice: 0,
 					priceUnitary: parseInt("{{ $product['price'] }}"),
 				}
 			}
@@ -76,7 +75,7 @@
 			var functionsBuy = {
 				eachInputPrice: function(){
 
-					var cant = $(this).val();
+					var cant = $(this).is(":checked") ? 1 : 0;
 					var priceUnitary = parseInt($(this).attr('data-price'));
 					var name = $(this).attr('data-name');
 					var price = cant * priceUnitary;
@@ -91,7 +90,6 @@
 
 						variablesBuy.localStorageProduct.accompaniments[$(this).attr("data-id")] = {
 							cant: cant,
-							price: price,
 							priceUnitary: priceUnitary,
 							name: name,
 						}
@@ -104,46 +102,16 @@
 					$('#totalPrice').text("$"+ variablesBuy.totalPrice);
 
 				},
-				initialLocalStorageProduct: function(productBuy){
+				makeId: function(){
 
-					$("input[data-id="+ variablesBuy.productId +"]").val(productBuy.cant);
-					$('#totalPrice').text("$"+ productBuy.totalPrice);
+				    var text = "";
+				    var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-					$.each(productBuy.accompaniments, function(i, index){
-						$("input[data-id="+ i +"]").val(index.cant);
-					});
+				    for( var i=0; i < 8; i++ )
+				        text += possible.charAt(Math.floor(Math.random() * possible.length));
 
-					functionsBuy.calculateTotalBuy();
-
+				    return text;
 				},
-				calculateTotalBuy: function(){
-
-					var totalBuy = 0;
-
-					$.each(localStorage, function(i, index){
-						var productBuy = JSON.parse(index);
-						totalBuy = totalBuy + productBuy.totalPrice;
-					});
-
-					$("#totalBuy").text(totalBuy);
-				
-				},
-				cancelBuyClick: function(){
-
-					localStorage.removeItem(variablesBuy.productId);
-
-				}
-			}
-
-			if (localStorage[variablesBuy.productId] == undefined) {
-
-				localStorage.setItem(variablesBuy.productId, JSON.stringify(variablesBuy.localStorageProduct));
-
-			}else{
-
-				var productBuy = JSON.parse(localStorage.getItem(variablesBuy.productId));
-				variablesBuy.localStorageProduct = productBuy;
-				functionsBuy.initialLocalStorageProduct(productBuy);
 			}
 
 			$(".input-price").change(function(){
@@ -151,13 +119,11 @@
 				variablesBuy.totalPrice = 0;
 
 				$(".input-price").each(functionsBuy.eachInputPrice);
-
-				variablesBuy.localStorageProduct.totalPrice = variablesBuy.totalPrice;
-				localStorage.setItem(variablesBuy.productId, JSON.stringify(variablesBuy.localStorageProduct));
-				functionsBuy.calculateTotalBuy();
 			});
-
-			$("#cancelBuy").click(functionsBuy.cancelBuyClick);
+	
+			$("#addProduct").click(function(){
+				localStorage.setItem(functionsBuy.makeId(), JSON.stringify(variablesBuy.localStorageProduct));
+			});
 		} )
 
 	</script>

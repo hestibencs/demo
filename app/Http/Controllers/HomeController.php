@@ -10,29 +10,49 @@ class HomeController extends Controller
 	{
 		$typeProducts = array(
 			array(
-				'name' => 'Hamburguesas',
-				'image' => 'multimedia/images/type-product/HVfkP6Kk6b3rpXK35w3f13U5VBs4gy3j.jpg',
+				'name' => 'A la parrilla',
+				'image' => 'img/cat/parrilla.png',
 				'id' => 'HVfkP6Kk6b3rpXK35w3f13U5VBs4gy3j'
 			),
 			array(
-				'name' => 'Pollo',
-				'image' => 'multimedia/images/type-product/3lL4M0jpvGJWY4z1xTDvV9cJ2LHebMeG.jpg',
+				'name' => 'A la plancha',
+				'image' => 'img/cat/plancha.png',
 				'id' => '3lL4M0jpvGJWY4z1xTDvV9cJ2LHebMeG'
 			),
 			array(
-				'name' => 'Ensaladas',
-				'image' => 'multimedia/images/type-product/z5dt1DdZeVS85tSs1vkCFnuP0LKj4mdu.jpg',
+				'name' => 'Vaqueros',
+				'image' => 'img/cat/vaqueros.png',
 				'id' => 'z5dt1DdZeVS85tSs1vkCFnuP0LKj4mdu'
 			),
 			array(
-				'name' => 'Papas y Acompañamientos',
-				'image' => 'multimedia/images/type-product/bXivH8P9ZMHdO352DoDDE164H0Db1qA0.jpg',
+				'name' => 'Sándwiches',
+				'image' => 'img/cat/sandwiches.png',
 				'id' => 'bXivH8P9ZMHdO352DoDDE164H0Db1qA0'
 			),
 			array(
-				'name' => 'Bebidas',
-				'image' => 'multimedia/images/type-product/wQw5qVitA3vv6IGusEEQ2ZR25vpDcTSN.jpg',
+				'name' => 'Wraps',
+				'image' => 'img/cat/wraps.png',
 				'id' => 'wQw5qVitA3vv6IGusEEQ2ZR25vpDcTSN'
+			),
+			array(
+				'name' => 'Ensaladas',
+				'image' => 'img/cat/ensaladas.png',
+				'id' => ''
+			),
+			array(
+				'name' => 'También disfruta',
+				'image' => 'img/cat/disfruta.png',
+				'id' => ''
+			),
+			array(
+				'name' => 'Postres',
+				'image' => 'img/cat/postres.png',
+				'id' => ''
+			),
+			array(
+				'name' => 'Bebidas',
+				'image' => 'img/cat/bebidas.png',
+				'id' => ''
 			),
 		);
 

@@ -1,0 +1,123 @@
+/* ============================= */
+/* ====== AJUSTES CREAMOS ======= */
+
+body {
+	background: url("../img/bgElCorral.png") repeat;
+}
+
+.sidr {
+	padding: 15px;
+}
+#sidr .left-menu {
+	padding-left: 30px;
+}
+#sidr .left-menu.derecha {
+	text-align: right;
+}
+.sidr .logo {
+	height: 100px;
+	margin-top: 0px;
+	margin-bottom: 20px;
+	width: 350px;
+}
+.sidr ul li {
+	line-height: 37px;
+}
+.sidr .logo img {height: 100%; margin-left: 110px;}
+.sidr .left-menu a {
+	font-family: 'Anton', sans-serif;
+	font-size: 24px;
+	text-transform: uppercase;
+	color: #351d11;
+}
+.sidr .left-menu a:hover {
+	-moz-transition: color 0.5s ease;
+	transition: color 0.5s ease;
+	color: #000000;
+}
+.sidr ul li {
+	border-bottom: dotted 2px #e6c19a;
+}
+#left-sidebar-close {
+    width: 19px;
+    height: 19px;
+    background: url("../img/saria-sprites.png") no-repeat -326px -47px;
+    position: relative;
+    top: -120px;
+    text-indent: -9999px;
+}
+
+
+/*menu top header*/
+.blur-bk .container #menu-collapse .navbar-nav .sidebar {
+    padding: 20px;
+    font-size: 30px;
+    width: inherit;
+    font-family: 'Anton', sans-serif;
+}
+.navbar-collapse, .container {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+.blur-bk .container #menu-collapse .navbar-nav > li > a {
+    height: 57px;
+}
+.navbar-default .navbar-nav > li > a {
+    color: #482b0d;
+}
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    color: #482b0d;
+}
+
+/*carrusel*/
+.owl-carousel {
+    width: 90%;
+    margin: 0 auto;
+}
+.carousel-content h3 a {
+	font-family: 'Anton', sans-serif;
+	color: #482b0d !important;
+	text-transform: uppercase;
+}
+.carousel-content p.description {
+	font-family: helvetica, Arial, sans-serif;
+	color: #616161;
+	padding-right: 5px;
+}
+.owl-item.blurred .carousel-content > p {
+    font-size: 16px;
+}
+
+/*columnas*/
+.container.cats {
+	margin-bottom: 0px;
+}
+
+.col-xs-1, .col-sm-1, .col-md-1, .col-lg-1, .col-xs-2, .col-sm-2, .col-md-2, .col-lg-2, .col-xs-3, .col-sm-3, .col-md-3, .col-lg-3, .col-xs-4, .col-sm-4, .col-md-4, .col-lg-4, .col-xs-5, .col-sm-5, .col-md-5, .col-lg-5, .col-xs-6, .col-sm-6, .col-md-6, .col-lg-6, .col-xs-7, .col-sm-7, .col-md-7, .col-lg-7, .col-xs-8, .col-sm-8, .col-md-8, .col-lg-8, .col-xs-9, .col-sm-9, .col-md-9, .col-lg-9, .col-xs-10, .col-sm-10, .col-md-10, .col-lg-10, .col-xs-11, .col-sm-11, .col-md-11, .col-lg-11, .col-xs-12, .col-sm-12, .col-md-12, .col-lg-12  {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+.brand-image img {
+	width: 100%;
+}
+
+/*shoppingcart*/
+.product-title p.producto {width: 400px !important; margin-bottom: 0px;}
+.product-title p.adiciones {width: 400px !important; margin-bottom: 0px; font-size: 15px !important; color: #505050; font-style: italic;}
+.wrap-cart .total {float: left;}
+
+/*producto*/
+section.page-title.container {margin-bottom: 20px;} 
+section.page-title h1 {margin-top: 0px; margin-bottom: 0px; font-family: 'Anton', sans-serif; color: #482b0d; font-size: 25px;}
+section.page-title hr {margin-top: 5px; margin-bottom: 5px; border-top: 2px dotted #fe6a4d;}
+section.product-page .container .row {margin-right: 0px; margin-left: 0px;}
+section.product-page .container {margin-bottom: 0px;}
+.brief-description {font-size: 20px;}
+.info-cart .precio {font-size: 24px; font-family: 'Anton', sans-serif; color:#482b0d; margin-bottom: 15px;}
+.info-cart h3 {margin: 0px;}
+.brief-description .accion {width: 100%; float: left;}
+.brief-description .accion hr {margin-top: 5px; margin-bottom: 15px; border-top: 1px dotted #fe6a4d;}
+.brief-description .accion a {padding: 5px 10px; margin-top: 5px; line-height: 36px; font-family: 'Anton', sans-serif; color: #fff; text-rendering: geometricPrecision;}
+.brief-description .accion .regresar {background-color: #8c8c8c; float: left;}
+.brief-description .accion .agregar {background-color: #ff6a4c; float: right;}
+
