@@ -1474,7 +1474,7 @@ a:active {
 /* ====== CAROUSEL ======= */
 .myowl .carousel-content {
   background-color: #ffffff;
-  padding: 25px;
+  padding: 10px;
   overflow: hidden;
 }
 .myowl .carousel-content h3 {
@@ -1523,7 +1523,7 @@ a:active {
   word-spacing: -1px;
 }
 .myowl .carousel-content .right-block {
-  width: 30%;
+  width: 35%;
   border-left: 1px solid #e3e3e3;
 }
 .myowl .carousel-content .right-block > p {
@@ -1582,28 +1582,31 @@ a:active {
     margin: 0;
   }
   .myowl .carousel-content h3 a {
-    font-size: 50px;
+    font-size: 26px;
   }
   .myowl .carousel-content > p,
   .myowl .carousel-content .right-block {
     float: left;
   }
   .myowl .carousel-content > p {
-    width: 70%;
-    font-size: 22px;
+    width: 65%;
+    font-size: 16px;
     word-spacing: -1px;
   }
   .myowl .carousel-content .right-block {
     border-left: 1px solid #e3e3e3;
   }
   .myowl .carousel-content .right-block > p {
-    font-size: 35px;
+    font-size: 32px;
     width: 100%;
     text-align: right;
     padding-left: 5px;
   }
+  .myowl .blurred .carousel-content .right-block > p {
+    font-size: 24px;
+  }
   .owl-improved-controls a {
-    top: 250px;
+    top: 150px;
   }
 }
 @media (min-width: 990px) and (max-width: 1200px) {

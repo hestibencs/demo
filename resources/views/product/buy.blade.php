@@ -46,13 +46,45 @@
                     <div class="accion">
                         <hr>
                         <div class="regresar"><a href="{{ URL::previous() }}">Regresar</a></div>
-                        <div class="agregar"><a href="{{ url('pay') }}" id="addProduct">Agregar <span id="totalPrice">${{ $product['price'] }}</span></a></div>
+                        <div class="agregar"><button type="button" data-toggle="modal" data-target="#modalProducto" class="btn btn-success">Agregar <span id="totalPrice">${{ $product['price'] }}</span></button></div>
                     </div>
                 </div>
             </div>
         </div>
     </div><!--/container-->
 </section><!--/product-page-->
+
+
+<!-- Modal -->
+<div id="modalProducto" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Agregar producto al carrito</h4>
+      </div>
+      <div class="modal-body">
+        <div class="modal-product">
+            <a href="product.html" class="product-image"><img src="http://placehold.it/90x81" alt="Product Image"/></a>
+            <div class="product-title">
+                <p class="producto">Corralísima</p>
+                <p class="adiciones">Adiciones: Tocineta, queso y papas agrandadas</p>
+                <p>1 <span>x $23.450</span></p>
+            </div>
+            <div class="right-icons pull-right" data-dismiss="modal">
+                <a href="javascript:;">x</a>
+            </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-warning" href="{{ url('/') }}">Agregar y seguir comprando</a>
+        <a class="btn btn-success" href="{{ url('pay') }}">Agregar y pagar</a>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 @stop
 
@@ -100,7 +132,6 @@
 					}
 
 					$('#totalPrice').text("$"+ variablesBuy.totalPrice);
-
 				},
 				makeId: function(){
 
@@ -112,6 +143,49 @@
 
 				    return text;
 				},
+	            addRowItemModal: function(obj, val1, val2, val3, accompaniments, i){
+
+	                obj.append('<div class="modal-product">\
+	                    <a href="product.html" class="product-image"><img src="http://placehold.it/90x81" alt="Product Image"/></a>\
+	                    <div class="product-title">\
+	                        <p class="producto">'+ val2 +'</p>\
+	                        <p class="adiciones">Adiciones: '+ accompaniments +'</p>\
+	                        <p>'+ val1 +' <span>x '+ val3 +'</span></p>\
+	                    </div>\
+	                    <div class="right-icons pull-right"  data-dismiss="modal">\
+	                        <a href="javascript:;">x</a>\
+	                    </div>\
+	                </div>');
+	            },
+	            modalAddProductShow: function(){
+
+	                var body = $(this).find('.modal-body');
+	                var totalPayment = 0;
+
+	                body.find(".modal-product").remove();
+
+                    var productBuy = variablesBuy.localStorageProduct;
+                    var accompaniments = "Sin adiciones";
+                    var priceTotal = parseInt(productBuy.priceUnitary) * parseInt(productBuy.cant);
+                    var count = 0;
+
+                    totalPayment += priceTotal;
+
+                    $.each(productBuy.accompaniments, function(j, accompaniment){
+
+                        if(count == 0){
+                            accompaniments = accompaniment.name;
+                        }else{
+                            accompaniments += ","+ accompaniment.name;
+                        }
+
+                        priceTotal += parseInt(accompaniment.priceUnitary);
+
+                        count++;
+                    });
+
+                    functionsBuy.addRowItemModal(body, productBuy.cant, productBuy.name, '$'+ priceTotal, accompaniments);
+	            },
 			}
 
 			$(".input-price").change(function(){
@@ -121,9 +195,12 @@
 				$(".input-price").each(functionsBuy.eachInputPrice);
 			});
 	
-			$("#addProduct").click(function(){
+			$('#modalProducto').on('show.bs.modal', functionsBuy.modalAddProductShow);
+
+			$('#modalProducto').find(".modal-footer a").click(function(){
 				localStorage.setItem(functionsBuy.makeId(), JSON.stringify(variablesBuy.localStorageProduct));
 			});
+
 		} )
 
 	</script>

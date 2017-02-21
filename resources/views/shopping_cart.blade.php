@@ -17,6 +17,7 @@
             <!-- cart with products -->
             <div class="dropdown-menu wrap-cart hidden-xs">
                 <hr>
+                <p class="total">Total: $<span>0</span></p>
                 <div class="product-buttons pull-right">
                     <a href="{{ url('/') }}" id="delete-order">Borrar pedido</a>
                     <a href="{{ url('pay') }}">Comprar</a>
@@ -36,6 +37,7 @@
             payDropdownShow: function(){
 
                 var body = $(this).parent().find('.wrap-cart');
+                var totalPayment = 0;
                 body.find(".wrap-cart-products").remove();
 
                 $.each(localStorage, function(i, product){
@@ -43,7 +45,6 @@
                     var productBuy = JSON.parse(product);
                     var accompaniments = "Sin adiciones";
                     var priceTotal = parseInt(productBuy.priceUnitary) * parseInt(productBuy.cant);
-
                     var count = 0;
 
                     $.each(productBuy.accompaniments, function(j, accompaniment){
@@ -59,9 +60,13 @@
                         count++;
                     });
 
+                    totalPayment += priceTotal;
+
                     functionsMaster.addRowItemModal(body, productBuy.cant, productBuy.name, '$'+ priceTotal, accompaniments, i);
 
                 });
+
+                body.find("p.total span").html(totalPayment);
             },
             addRowItemModal: function(obj, val1, val2, val3, accompaniments, i){
 
