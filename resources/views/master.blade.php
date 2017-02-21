@@ -21,6 +21,8 @@
       <link rel="stylesheet" href="{{ asset('css/jquery.selectBoxIt.css') }}">
       <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
       <link rel="stylesheet" href="{{ asset('css/homepage.css') }}">
+      <link rel="stylesheet" href="{{ asset('css/Font-Awesome/css/font-awesome.css') }}">
+      <link rel="stylesheet" href="{{ asset('css/build.css') }}">
       <link rel="stylesheet" href="{{ asset('css/creamos.css') }}">
 
       @yield('styles')
@@ -56,6 +58,7 @@
     <script src="{{ asset('js/vendor/jquery-1.10.1.min.js') }}"></script>
     
     <script src="{{ asset('js/vendor/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('js/vendor/scrollReveal.min.js') }}"></script>
     <script src="{{ asset('js/jquery.sidr.min.js') }}"></script>
     <script src="{{ asset('js/owl.carousel.js') }}"></script>
     <script src="{{ asset('js/owl.carousel.improved.js') }}"></script>

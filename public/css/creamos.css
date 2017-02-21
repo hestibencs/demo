@@ -84,8 +84,11 @@ body {
 	color: #616161;
 	padding-right: 5px;
 }
+.owl-item.blurred .carousel-block a {
+	font-size: 26px;
+}
 .owl-item.blurred .carousel-content > p {
-    font-size: 16px;
+    font-size: 14px;
 }
 
 /*columnas*/
@@ -117,7 +120,31 @@ section.product-page .container {margin-bottom: 0px;}
 .info-cart h3 {margin: 0px;}
 .brief-description .accion {width: 100%; float: left;}
 .brief-description .accion hr {margin-top: 5px; margin-bottom: 15px; border-top: 1px dotted #fe6a4d;}
-.brief-description .accion a {padding: 5px 10px; margin-top: 5px; line-height: 36px; font-family: 'Anton', sans-serif; color: #fff; text-rendering: geometricPrecision;}
-.brief-description .accion .regresar {background-color: #8c8c8c; float: left;}
-.brief-description .accion .agregar {background-color: #ff6a4c; float: right;}
+.brief-description .accion a {padding: 3px 12px; margin-top: 5px; line-height: 36px; font-family: 'Anton', sans-serif; color: #fff; text-rendering: geometricPrecision;}
+.brief-description .accion .regresar {float: left;}
+.brief-description .accion .regresar a {background-color: #8c8c8c;border: 1px solid #666666; border-radius: 4px;}
+.brief-description .accion .agregar {float: right;}
+.brief-description .accion .agregar button {float: right; font-family: 'Anton', sans-serif; text-rendering: geometricPrecision; font-size: 20px; padding: 3px 12px;}
 
+.modal-dialog {width: 600px;margin: 0 auto;top: 150px;}
+h4.modal-title {font-size: 22px; font-family: 'Anton', sans-serif; color: #482b0d;}
+.modal-product {min-height: 84px;}
+.modal-product .product-title, .modal-product .product-image {float: left;}
+.modal-product .product-title {margin-left: 15px;}
+.modal-product .product-title p.producto {font-size: 24px}
+.modal-product .product-title p.adiciones {font-size: 15px; font-size: italic;}
+.modal-product .product-title span {color: #ff6a4c; font-size: 24px; font-weight: 300;}
+.modal-product .right-icons.pull-right {width: 25px;height: 25px;border-radius: 90px;background-color: #fa694c;line-height: 24px;text-align: center;font-size: 22px;font-weight: 300;margin-left: 5px;}
+.modal-product .right-icons.pull-right a {color: #fff;}
+.modal-footer {margin-top: 0px;}
+.modal-footer .btn {font-family: 'Anton', sans-serif; text-rendering: geometricPrecision; font-size: 18px;}
+.modal-footer .btn-warning {float: left;}
+
+/*proceso compra*/
+section.shopping-cart .table {margin-bottom: 0px;}
+section.shopping-cart .row {margin: 0 auto;}
+section.shopping-cart .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {padding: 8px 0px; vertical-align: middle; border-top: 6px solid transparent;}
+section.shopping-cart .table th.nombre {min-width: 180px;}
+section.shopping-cart .table th.valor {min-width: 90px;}
+section.shopping-cart table thead th {font-family: 'Anton', sans-serif; font-size: 18px; color:#482b0d; text-rendering: geometricPrecision;}
+section.shopping-cart .table > thead > tr > th {border-bottom: 0px solid #dddddd;}
