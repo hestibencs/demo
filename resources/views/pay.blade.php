@@ -13,7 +13,7 @@
 
 <section class="shopping-cart container">
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-8">
             <div class="main-board">
                 <table class="table" id="products">
                     <thead>
@@ -26,121 +26,114 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- <tr>
-                            <td><img class="pull-left" src="http://placehold.it/70x70" alt="Saria Shopping Cart"/></td>
-                            <td class="text-center">Corralísima 3/4 libra</td>
-                            <td class="text-center">Tocineta, champiñón, pepinillos, combo agrandado</td>
-                            <td class="text-center"><span>$23.500</span></td>
-                            <td class="text-center"><a href="#">x</a></td>
-                        </tr>
-                        <tr>
-                            <td><img class="pull-left" src="http://placehold.it/70x70" alt="Saria Shopping Cart"/></td>
-                            <td class="text-center">Todoterreno</td>
-                            <td class="text-center">Combo agrandado</td>
-                            <td class="text-center"><span>$27.500</span></td>
-                            <td class="text-center"><a href="#">x</a></td>
-                        </tr> -->
                     </tbody>
+                    <tfoot>
+                        <tr>
+                            <th></th>
+                            <th>&nbsp;</th>
+                            <th class="text-center">Total:</th>
+                            <th class="text-center valor-total">$0</th>
+                            <th>&nbsp;</th>
+                        </tr>
+                    </tfoot>
                 </table><!--/table hidden xs -->
             </div><!--/main-board -->
+        </div>
+        <div class="col-lg-4">
+            <div class="btn-pagar">
+                <button class="btn-pago btn btn-success" data-toggle="modal" data-target="#modalTelefono">Realizar </br> pedido</button>
+            </div>
         </div>
     </div><!--/row -->
 </section><!--/shopping-cart-->
 
-	<!-- <div class="starter-template">
+<!-- Modal Telefono -->
+<div id="modalTelefono" class="modal fade" role="dialog">
+  <div class="modal-dialog">
 
-		<div class="alert alert-success" style="display: none;">
-		  <strong>Exito!</strong> <span></span>
-		</div>
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Ingresar número de celular</h4>
+      </div>
+      <div class="modal-body">
+        <div class="modal-product">
+            <div class="product-title">
+                <p class="sms">Para agilizar el pedido enviaremos un mensaje de texto a tu celular, por favor ingrésalo.</p>
+                <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingresar número celular">
+            </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success"><i class="fa fa-circle-o-notch fa-spin" style="display: none;"></i>  Confirmar celular</button>
+      </div>
+    </div>
 
-		<div class="alert alert-danger" style="display: none;">
-		  <strong>Alerta!</strong> <span></span>
-		</div>
+  </div>
+</div>
 
-		<div class="row">
-			<div class="col-sm-6 col-md-4">
-				<div class="thumbnail">
-					<div class="caption">
-			            <div class="row">
-			              <div class="col-md-12">
-			                <h4 class="text-center">Hamburguesas Colombia</h4>
-			              </div>
-			            </div>
-			            <div class="row">
-			              <div class="col-md-2"><strong>Cant.</strong></div>
-			              <div class="col-md-7"><strong>Nombre</strong></div>
-			              <div class="col-md-3"><strong>Valor</strong></div>
-			            </div>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-6 col-md-4">
-				<div class="thumbnail">
-					<div class="caption">
-						<h3>Enviar Confirmacion</h3>
-						<p>Ingrese su numero de celular.</p>
-						<p>
-							<input type="number" name="mobile" class="form-control">
-						</p>
-						<p>
-							<a href="javascript:;" class="btn btn-primary" id="send_number" role="button">Enviar</a>
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="col-sm-6 col-md-4">
-				<div class="thumbnail">
-					<div class="caption">
-						<h3>Confirmar</h3>
-						<p>Ingrese el codigo.</p>
-						<p>
-							<input type="number" name="code_mobile" class="form-control" readonly>
-						</p>
-						<p>
-							<a href="javascript:;" class="btn btn-primary" id="confirm_code" role="button">Aceptar</a>
-						</p>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div> -->
+<!-- Modal Telefono 2 -->
+<div id="modalTelefono2" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Confirmar celular</h4>
+      </div>
+      <div class="modal-body">
+        <div class="modal-product">
+            <div class="product-title">
+                <p class="sms">Ingresa el código de verificación que hemos enviado a tu celular.</p>
+                <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingresar código de verificación">
+            </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-success" data-dismiss="modal" data-toggle="modal" data-target="#modalPago">Confirmar código</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- Modal Pago -->
+<div id="modalPago" class="modal fade" role="dialog">
+  	<div class="modal-dialog">
+
+	    <!-- Modal content-->
+	    <div class="modal-content">
+	      <div class="modal-header">
+	        <h4 class="modal-title">Insertar tarjeta</h4>
+	      </div>
+	      <div class="modal-body">
+	        <div class="modal-product">
+	            <div class="product-title">
+	                <p class="sms">Ingrese su tarjeta en el Datafono, digite su clave y espere su recibo impreso.</p>
+	                <p class="sms procesar" style="text-align: center;">Procesando, pronto enviaremos un SMS a su celular para entregar su pedido.</p>
+	            </div>
+	        </div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-success" data-dismiss="modal" onclick="location.href='{{ url('/') }}'">Finalizar</button>
+	      </div>
+	    </div>
+
+  	</div>
+</div>
+
 @stop
 
 @section('scripts')
 	<script type="text/javascript">
 
 		$( function() {
+
+			var variablesPay = {
+				mobileUser : ''
+			}
 		
 			var functionsPay = {
-				// payVoucher: function(){
-
-				// 	var body = $(".starter-template").find(".col-sm-6:first").find('.caption');
-				// 	body.find(".price-content").remove();
-
-				// 	$.each(localStorage, function(i, product){
-
-				// 	  var productBuy = JSON.parse(product);
-
-				// 	  functionsPay.addRowItemVoucher(body, productBuy.cant, productBuy.name, '$'+ (parseInt(productBuy.cant) * parseInt(productBuy.priceUnitary)));
-
-				// 	  $.each(productBuy.accompaniments, function(j, accompaniment){
-				// 	    functionsPay.addRowItemVoucher(body, accompaniment.cant, accompaniment.name, '$'+ (parseInt(accompaniment.cant) * parseInt(accompaniment.priceUnitary)));
-				// 	  });
-
-				// 	});
-
-				// 	functionsPay.addRowItemVoucher(body, '', '<p class="text-right"><strong>Neto</strong></p>', '$'+ parseInt(parseInt($("#totalBuy").text()) * 0.81));
-				// 	functionsPay.addRowItemVoucher(body, '', '<p class="text-right"><strong>IVA</strong></p>', '$'+ parseInt(parseInt($("#totalBuy").text()) * 0.19));
-				// 	functionsPay.addRowItemVoucher(body, '', '<p class="text-right"><strong>Total</strong></p>', '$'+ $("#totalBuy").text());
-				// },
-				// addRowItemVoucher: function(obj, val1, val2, val3){
-
-				// 	obj.append('<div class="row price-content">\
-				// 	  <div class="col-md-2">'+ val1 +'</div>\
-				// 	  <div class="col-md-7">'+ val2 +'</div>\
-				// 	  <div class="col-md-3">'+ val3 +'</div>\
-				// 	</div>');
-				// }
 				tableLoadTbody: function(){
 
 	                var body = $("#products").find('tbody');
@@ -173,7 +166,7 @@
 
 	                });
 
-	                // body.find("p.total span").html(totalPayment);
+	                $("#products").find('tfoot .valor-total').html("$"+ totalPayment);
 				},
 				addTrTableProducts: function(obj, val1, val2, val3, accompaniments, i){
 
@@ -188,56 +181,100 @@
 	                obj.find("tr:last").find("a:last").click(functionsPay.clickDeleteProduct);
 				},
 				clickDeleteProduct: function(){
+
 					localStorage.removeItem($(this).attr("data-position"));
 					$(this).closest("tr").remove();
+					functionsPay.tableLoadTbody();
+				},
+				clickSendCode: function(){
+
+					var input = $("#modalTelefono").find("input[type=number]");
+
+					if(input.val() == ""){
+
+						alert("Ingrese Numero");
+						return false;
+
+					}else if(input.val().length < 8){
+
+						alert("Numero Invalido");
+						return false;
+					}
+
+					var loading = $(this).find("i");
+					loading.show();
+
+					$.post( "{{ url('sms/send/code') }}", { 
+						_token: "{{ csrf_token() }}",
+						mobile: input.val(),
+					} ).done(function( data ) {
+
+						// if(data == 1){
+
+							variablesPay.mobileUser = input.val();
+							loading.hide();
+
+							$("#modalTelefono").modal("toggle");
+							$("#modalTelefono2").modal("toggle");
+						// }
+					});
+
+				},
+				clickVerifyCode: function(){
+
+					var input = $("#modalTelefono2").find("input[type=number]");
+
+					if(input.val() != "1234"){
+
+						alert("Codigo Invalido");
+						return false;
+					}
+				},
+				clickFinishPay: function(){
+
+					$.post( "{{ url('pay/store') }}", { 
+						_token: "{{ csrf_token() }}",
+						mobile: variablesPay.mobileUser,
+						localStorage: localStorage
+					} ).done(function( data ) {
+
+						if(data == 1){
+							alert("aca imprime factura!")
+						}
+
+						// return false;
+
+			            $.each(localStorage, function(i, index){
+			                localStorage.removeItem(i);
+			            });
+
+						// if(data == 1){
+							// loading.hide();
+							// $("#modalTelefono").modal("toggle");
+							// $("#modalTelefono2").modal("toggle");
+						// }
+					});
+
+					// return false;
+
+
 				}
 			}
 
 			functionsPay.tableLoadTbody();
 
-			// functionsPay.payVoucher();
+			$("#modalTelefono").find(".modal-footer button").click(functionsPay.clickSendCode);
+			$("#modalTelefono2").find(".modal-footer button").click(functionsPay.clickVerifyCode);
+			$("#modalPago").find(".modal-footer button").click(functionsPay.clickFinishPay);
 
-			// $("input[name=mobile]").focus();
+			$(".btn-pago").click(function(){
 
-			// $("#send_number").click(function(){
+				if(localStorage.length == 0){
+					alert("Carrito de compra vacio!");
+					return false;
+				}
 
-			// 	if($("input[name=mobile]").val() == ""){
-
-			// 		$(".alert-danger").find("span").text("Numero invalido");
-			// 		$(".alert-danger").fadeIn().delay(1500).fadeOut('slow');
-
-			// 	}else{
-
-			// 		$(".alert-success").find("span").text("Se ha enviado un codigo a su celular, porfavor ingreselo.");
-			// 		$(".alert-success").fadeIn().delay(2000).fadeOut('slow');
-
-			// 		$("input[name=code_mobile]").attr("readonly", false).focus();
-			// 		$("input[name=mobile]").attr("readonly", "");
-			// 	}
-			// });
-
-			// $("#confirm_code").click(function(){
-
-			// 	if($("input[name=code_mobile]").val() == "123"){
-					
-			// 		$(".alert-success").find("span").text("Codigo Valido, Se enviara confirmacion cuando este su pedido");
-			// 		$(".alert-success").fadeIn();
-
-			// 		setTimeout(function(){
-
-			// 			$.each(localStorage, function(i, product){
-			// 				localStorage.removeItem(i);
-			// 			});
-
-			// 			window.location.href = 'http://127.0.0.1:8000/';
-			// 		}, 3500);
-
-			// 	}else{
-
-			// 		$(".alert-danger").find("span").text("Codigo Invalido");
-			// 		$(".alert-danger").fadeIn().delay(1500).fadeOut('slow');
-			// 	}
-			// });
+			});
 		});
 
 	</script>

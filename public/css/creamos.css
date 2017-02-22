@@ -143,8 +143,27 @@ h4.modal-title {font-size: 22px; font-family: 'Anton', sans-serif; color: #482b0
 /*proceso compra*/
 section.shopping-cart .table {margin-bottom: 0px;}
 section.shopping-cart .row {margin: 0 auto;}
-section.shopping-cart .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {padding: 8px 0px; vertical-align: middle; border-top: 6px solid transparent;}
+section.shopping-cart .table > thead > tr > th, .table > tbody > tr > th, .table > tfoot > tr > th, .table > thead > tr > td, .table > tbody > tr > td, .table > tfoot > tr > td {padding: 0px; vertical-align: middle; border-top: 0px;}
 section.shopping-cart .table th.nombre {min-width: 180px;}
-section.shopping-cart .table th.valor {min-width: 90px;}
-section.shopping-cart table thead th {font-family: 'Anton', sans-serif; font-size: 18px; color:#482b0d; text-rendering: geometricPrecision;}
-section.shopping-cart .table > thead > tr > th {border-bottom: 0px solid #dddddd;}
+section.shopping-cart .table th.valor {min-width: 100px;}
+section.shopping-cart .table th.borrar {min-width: 90px;}
+section.shopping-cart .table th.adiciones {min-width: 180px;}
+section.shopping-cart .table > thead {background-color: rgba(255, 255, 255, 0.51);}
+section.shopping-cart table thead th, section.shopping-cart table tfoot th {font-family: 'Anton', sans-serif; font-size: 18px; color:#482b0d; text-rendering: geometricPrecision;}
+section.shopping-cart .table tbody tr, section.shopping-cart .table thead tr {border-top: 2px solid #482b0d;}
+section.shopping-cart .table tbody tr:last-child {border-bottom: 2px solid #482b0d;}
+section.shopping-cart .table > thead > tr > th, section.shopping-cart .table > tfoot > tr > th {border-bottom: 0px; padding: 10px 0px;}
+section.shopping-cart .table tbody .text-center {font-family: 'Anton', sans-serif; font-size: 14px;}
+section.shopping-cart .table tbody tr td a.borrar {width: 25px;height: 25px;border-radius: 90px;background-color: #fa694c;line-height: 24px;color: #fff;}
+section.shopping-cart .table tbody tr td a.borrar:hover {background-color: #e74625;}
+
+section.shopping-cart .btn-pagar {width: 175px; height: 175px; margin: 0 auto; color: #fff; background-color: #1bc30c; border-radius: 50%; text-align: center;}
+section.shopping-cart .btn-pagar:hover {background-color: #15a708;}
+section.shopping-cart .btn-pagar button.btn-pago {vertical-align: middle; display: inline-block; color: #fff; font-family: 'Anton', sans-serif; font-size: 32px; text-transform: uppercase; margin-top: 48px; background: none; border: none; outline: none;}
+
+#modalTelefono .modal-product, #modalTelefono2 .modal-product, #modalPago .modal-product {display: inline-block;}
+#modalTelefono .modal-product .product-title, #modalTelefono2 .modal-product .product-title, #modalPago .modal-product .product-title {margin-left: 0px;}
+#modalTelefono .product-title p.sms, #modalTelefono2 .product-title p.sms, #modalPago .product-title p.sms {width: 100%; font-size: 24px;}
+#modalTelefono .modal-dialog, #modalTelefono2 .modal-dialog, #modalPago .modal-dialog {top: 100px;}
+#modalPago .product-title p.sms{margin-bottom: 50px;}
+#modalPago .product-title p.sms.procesar {font-size: 20px; margin: 0 auto; width: 70%;}
