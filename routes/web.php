@@ -13,8 +13,14 @@
 
 Route::get('/', 'HomeController@index');
 
-Route::get('/pay', function(){
-	return view('pay');
+Route::group(array('prefix' => 'pay'), function () {
+
+    Route::get('/', function(){
+		return view('pay');
+    });
+
+    Route::post('/store', 'PayController@store');
+
 });
 
 Route::group(array('prefix' => 'product'), function () {
@@ -29,3 +35,14 @@ Route::group(array('prefix' => 'product'), function () {
         'uses' => 'ProductController@buy'
     ]);
 });
+
+Route::group(array('prefix' => 'order'), function () {
+
+    Route::get('/', 'OrderController@index');
+    
+    Route::post('/confirm', 'OrderController@confirm');
+
+    Route::post('/load', 'OrderController@load');
+});
+
+Route::post('sms/send/code', 'SmsController@send');
