@@ -21,9 +21,9 @@ class OrderController extends Controller
 
 		$order = DB::table('order_pay')->where('id', $request->input('id'))->get()->first();
 
-		DB::table('order_pay')->where('id', $request->input('id'))->delete();
+		// DB::table('order_pay')->where('id', $request->input('id'))->delete();
 
-		return 'OK: 1 mensajes enviados...';
+		// return 'OK: 1 mensajes enviados...';
 
 		$client = new \GuzzleHttp\Client();
 

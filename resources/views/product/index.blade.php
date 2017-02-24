@@ -9,7 +9,7 @@
 
         @foreach($products as $product)
 	        <div class="carousel-block">
-	            <a href="{{ route('product.buy', $product['id']) }}"><img src="http://placehold.it/570x330" alt="Product Image"/></a>
+	            <a href="{{ route('product.buy', $product['id']) }}"><img style="width: 60%;" src="{{ url($product['image']) }}" alt="Product Image"/></a>
 	            <div class="carousel-content">
 	                <h3><a href="{{ route('product.buy', $product['id']) }}">{{ $product['name'] }}</a></h3>
 	                <hr>

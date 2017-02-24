@@ -17,7 +17,7 @@
         <div class="row">
             <div class="col-lg-6 col-md-12 col-sm-12">
                 <div class="gallery">
-                    <img id="gallery_main_img" src="http://placehold.it/480x400" alt="Foto del producto"/>
+                    <img id="gallery_main_img" src="{{ url($product['image']) }}" alt="Foto del producto"/>
                 </div>
                 <input type="checkbox" style="display: none;" checked class="form-control input-price" id="product" data-id="{{ $product['id'] }}" data-price="{{ $product['price'] }}">
             </div>
