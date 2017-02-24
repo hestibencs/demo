@@ -23,7 +23,7 @@
 <section class="shopping-cart container invoice-print" style="display: none;">
     <div class="row">
         <div class="col-lg-4">
-            <div class="main-board" style="background-color: white; padding: 20px;">
+            <div class="main-board" style="background-color: white; padding: 20px; width: 333px;">
 	            <div class="row">
 	            	<div class="col-lg-12">
 	            		VENDEDOR: -------------</br>
