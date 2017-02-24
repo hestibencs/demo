@@ -64,3 +64,7 @@ Route::group(array('prefix' => 'print'), function () {
     Route::post('order/confirm', 'PrintController@orderConfirm');
 
 });
+
+Route::get('list', function(){
+    return view('list');
+});
