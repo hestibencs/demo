@@ -3,12 +3,12 @@
 @section('styles')
 
 <style type="text/css">
-@media print
-{
-	body * { visibility: hidden; }
-	.invoice-print * { visibility: visible; }
-	.invoice-print { position: absolute; top: 40px; left: 30px; }
-}
+	@media print
+	{
+		body * { visibility: hidden; }
+		.invoice-print * { visibility: visible; }
+		.invoice-print { position: absolute; top: 0px; }
+	}
 </style>
 
 @stop
@@ -100,7 +100,7 @@
 
 							total += index.price * index.cant;
 
-							$.each(index.accompaniment, function(j, indexJ){
+							$.each(index.accompaniment_pay, function(j, indexJ){
 
 								$("#list_price tbody").append('\
 									<tr>\

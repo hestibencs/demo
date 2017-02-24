@@ -12,6 +12,6 @@ class OrderPay extends Model
 
     public function productOrder()
     {
-        return $this->hasMany('App\ProductOrder', 'order_pay_id', 'id')->with('accompaniment');
+        return $this->hasMany('App\ProductOrder', 'order_pay_id', 'id')->with('accompanimentPay');
     }
 }

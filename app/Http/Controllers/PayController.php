@@ -29,7 +29,7 @@ class PayController extends Controller
 			
 			foreach ($localStorageJson->accompaniments as $keyAccompaniments => $accompaniment) {
 
-				DB::table('accompaniments')->insert([
+				DB::table('accompaniment_pay')->insert([
 			    	'name' => $accompaniment->name,
 			    	'cant' => $accompaniment->cant,
 			    	'price' => $accompaniment->priceUnitary,

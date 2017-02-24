@@ -21,9 +21,9 @@ class OrderController extends Controller
 
 		$order = DB::table('order_pay')->where('id', $request->input('id'))->get()->first();
 
-		// DB::table('order_pay')->where('id', $request->input('id'))->delete();
+		DB::table('order_pay')->where('id', $request->input('id'))->delete();
 
-		// return 'OK: 1 mensajes enviados...';
+		return 'OK: 1 mensajes enviados...';
 
 		$client = new \GuzzleHttp\Client();
 
@@ -49,13 +49,10 @@ class OrderController extends Controller
 
 	public static function load(Request $request)
 	{
+		// echo dd($request->all());
+		$orders = OrderPay::where('print', 2)->where('id', '>', $request->input('idLast'))->with('productOrder')->get();
+		$idLast = $orders->count() == 0 ? '0' : $orders->last()->id;
 
-		$orders = OrderPay::where('print', 1)->with('productOrder')->get();
-
-		if(count($orders) == 0){
-			return 0;	
-		}
-
-		return compact('orders');
+		return compact('orders', 'idLast');
 	}
 }

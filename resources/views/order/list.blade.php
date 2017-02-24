@@ -30,7 +30,9 @@
 	                            <td class="text-center">{{ $order->id }}</td>
 	                            <td class="text-center">123456</td>
 	                            <td class="text-center"><span>$0</span></td>
-	                            <td class="text-center"><a class="borrar confirm-order" href="javascript:;">&nbsp; Confirmar &nbsp;</a></td>
+	                            <td class="text-center">
+	                            	<button type="button" class="confirm-order borrar btn btn-success" style="margin: 5px;">&nbsp; Confirmar &nbsp;</button>
+                            	</td>
 	                        </tr>
                         @endforeach
                     </tbody>
@@ -49,9 +51,9 @@
 
 		$( function() {
 
-			// var variablesListOrder = {
-			// 	idLast: "{{ $idLast }}",
-			// }
+			var variablesListOrder = {
+				idLast: "{{ $idLast }}",
+			}
 
 			var functionsListOrder = {
 				clickConfirmOrder: function(){
@@ -77,14 +79,16 @@
 
 					$.post( "{{ url('order/load') }}", { 
 						_token: "{{ csrf_token() }}",
-						// idLast: variablesListOrder.idLast,
+						idLast: variablesListOrder.idLast,
 					} ).done(function( data ) {
 
 						if(data == 0){
 							return false;
 						}
-
-						// variablesListOrder.idLast = data.idLast;
+						// console.log(data}.idLast)
+						if(data.idLast != "0"){
+							variablesListOrder.idLast = data.idLast;
+						}
 
 						$.each(data.orders, function(i, index){
 							$("#orders tbody").append('\
@@ -92,7 +96,7 @@
 		                            <td class="text-center">'+ index.id +'</td>\
 		                            <td class="text-center">123456</td>\
 		                            <td class="text-center"><span>$0</span></td>\
-		                            <td class="text-center"><a class="borrar confirm-order" href="javascript:;">&nbsp; Confirmar &nbsp;</a></td>\
+		                            <td class="text-center"><button type="button" class="confirm-order borrar btn btn-success" style="margin: 5px;">&nbsp; Confirmar &nbsp;</button></td>\
 		                        </tr>\
 							');
 						});

@@ -8,7 +8,7 @@ class SmsController extends Controller
 {
 	public static function send(Request $request)
 	{
-		// return 'OK: 1 mensajes enviados...';
+		return 'OK: 1 mensajes enviados...';
 
 		$client = new \GuzzleHttp\Client();
 

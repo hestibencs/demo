@@ -8,7 +8,7 @@
     <!-- Right submenu visible on desktop and tablet -->
     <ul class="hidden-xs nav navbar-nav navbar-right">
         <li class="dropdown">
-            <a href="{{ url('pay') }}" class="shop dropdown-toggle" data-toggle="dropdown">shopping cart</a>
+            <a href="javascript:;" class="shop dropdown-toggle" data-toggle="dropdown">shopping cart</a>
             <!-- empty cart block
             <ul class="dropdown-menu wrap-empty-cart hidden-xs">
                 <li>you have no items in your shopping cart</li>
@@ -39,6 +39,7 @@
                 var body = $(this).parent().find('.wrap-cart');
                 var totalPayment = 0;
                 body.find(".wrap-cart-products").remove();
+                body.find(".product-buttons").hide();
 
                 $.each(localStorage, function(i, product){
 
@@ -63,6 +64,8 @@
                     totalPayment += priceTotal;
 
                     functionsMaster.addRowItemModal(body, productBuy.cant, productBuy.name, '$'+ priceTotal, accompaniments, i);
+
+                    body.find(".product-buttons").show();
 
                 });
 

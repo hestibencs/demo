@@ -10,8 +10,8 @@ class ProductOrder extends Model
 	public $timestamps = false;
 	protected $table = 'product_order';
 
-    public function accompaniment()
+    public function accompanimentPay()
     {
-        return $this->hasMany('App\Accompaniment', 'product_order_id', 'id');
+        return $this->hasMany('App\AccompanimentPay', 'product_order_id', 'id');
     }
 }

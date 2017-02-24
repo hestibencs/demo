@@ -4,9 +4,9 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Accompaniment extends Model
+class AccompanimentPay extends Model
 {
 
 	public $timestamps = false;
-    protected $table = 'accompaniment';
+    protected $table = 'accompaniment_pay';
 }
