@@ -49,9 +49,9 @@
 
 		$( function() {
 
-			var variablesListOrder = {
-				idLast: "{{ $idLast }}",
-			}
+			// var variablesListOrder = {
+			// 	idLast: "{{ $idLast }}",
+			// }
 
 			var functionsListOrder = {
 				clickConfirmOrder: function(){
@@ -64,7 +64,7 @@
 						id: id,
 					} ).done(function( data ) {
 
-						if(data == 1){
+						if(data.split("\n").join("") == 'OK: 1 mensajes enviados...'){
 
 							// alert("aca se elimina la casilla y se envia mensaje de confirmacion.")
 
@@ -77,14 +77,14 @@
 
 					$.post( "{{ url('order/load') }}", { 
 						_token: "{{ csrf_token() }}",
-						idLast: variablesListOrder.idLast,
+						// idLast: variablesListOrder.idLast,
 					} ).done(function( data ) {
 
 						if(data == 0){
 							return false;
 						}
 
-						variablesListOrder.idLast = data.idLast;
+						// variablesListOrder.idLast = data.idLast;
 
 						$.each(data.orders, function(i, index){
 							$("#orders tbody").append('\

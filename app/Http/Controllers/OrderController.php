@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use DB;
+use App\OrderPay;
 
 class OrderController extends Controller
 {
 	public static function index()
 	{
-		$orders = DB::table('order_pay')->get();
+		$orders = OrderPay::where('print', 2)->with('productOrder')->get();
 		$idLast = $orders->count() == 0 ? '1' : $orders->last()->id;
 
 		return view('order.list', compact('orders', 'idLast'));
@@ -20,19 +21,21 @@ class OrderController extends Controller
 
 		$order = DB::table('order_pay')->where('id', $request->input('id'))->get()->first();
 
-		DB::table('order_pay')->where('id', $request->input('id'))->delete();
+		// DB::table('order_pay')->where('id', $request->input('id'))->delete();
 
-		return 1;
+		// return 'OK: 1 mensajes enviados...';
 
 		$client = new \GuzzleHttp\Client();
 
-		$res = $client->request('GET', 'http://www.textoatodos.com/sistema/wss/smsapi16.php', [
-			'usuario' => "creamosheiner", 
-			'password' => "8efaa3",
-			'celular' => $order->mobile,
-			'mensaje' => "Puedes recojer tu pedido, codigo: 123456",
-			'lada' => "3",
-		]);
+		$res = $client->request('GET', 'http://www.textoatodos.com/sistema/wss/smsapi16.php?usuario=creamosheiner&password=8efaa3&celular='. $order->mobile .'&mensaje=Puedes recojer tu pedido, codigo: 123456&lada=3', []);
+
+		// $res = $client->request('GET', 'http://www.textoatodos.com/sistema/wss/smsapi16.php', [
+		// 	'usuario' => "creamosheiner", 
+		// 	'password' => "8efaa3",
+		// 	'celular' => $order->mobile,
+		// 	'mensaje' => "Puedes recojer tu pedido, codigo: 123456",
+		// 	'lada' => "3",
+		// ]);
 
 		DB::table('order_pay')->where('id', $request->input('id'))->delete();
 
@@ -47,14 +50,12 @@ class OrderController extends Controller
 	public static function load(Request $request)
 	{
 
-		$orders = DB::table('order_pay')->where('id', '>', $request->input('idLast'))->get();
+		$orders = OrderPay::where('print', 1)->with('productOrder')->get();
 
 		if(count($orders) == 0){
-			return 0;
+			return 0;	
 		}
 
-		$idLast = $orders->last()->id;
-
-		return compact('orders', 'idLast');
+		return compact('orders');
 	}
 }

@@ -46,3 +46,21 @@ Route::group(array('prefix' => 'order'), function () {
 });
 
 Route::post('sms/send/code', 'SmsController@send');
+
+Route::group(array('prefix' => 'print'), function () {
+
+    Route::get('invoice', function(){
+        return view('print.invoice');
+    });
+
+    Route::get('order', function(){
+        return view('print.order');
+    });
+
+    Route::post('invoice', 'PrintController@invoice');
+    Route::post('order', 'PrintController@order');
+
+    Route::post('invoice/confirm', 'PrintController@invoiceConfirm');
+    Route::post('order/confirm', 'PrintController@orderConfirm');
+
+});

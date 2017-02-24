@@ -209,14 +209,19 @@
 						mobile: input.val(),
 					} ).done(function( data ) {
 
-						// if(data == 1){
+						if(data.split("\n").join("") == 'OK: 1 mensajes enviados...'){
 
 							variablesPay.mobileUser = input.val();
 							loading.hide();
 
 							$("#modalTelefono").modal("toggle");
 							$("#modalTelefono2").modal("toggle");
-						// }
+
+						}else{
+
+							alert("Tenemos inconvenientes!");
+							loading.hide();
+						}
 					});
 
 				},
@@ -239,7 +244,7 @@
 					} ).done(function( data ) {
 
 						if(data == 1){
-							alert("aca imprime factura!")
+							// alert("aca imprime factura!")
 						}
 
 						// return false;

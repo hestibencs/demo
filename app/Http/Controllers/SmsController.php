@@ -8,20 +8,16 @@ class SmsController extends Controller
 {
 	public static function send(Request $request)
 	{
-		return 1;
+		// return 'OK: 1 mensajes enviados...';
 
 		$client = new \GuzzleHttp\Client();
 
-		$res = $client->request('GET', 'http://www.textoatodos.com/sistema/wss/smsapi16.php', [
-			'usuario' => "creamosheiner", 
-			'password' => "8efaa3",
-			'celular' => $request->input('mobile'),
-			'mensaje' => "Tu codigo de verificación el corral es: 1234",
-			'lada' => "3",
-		]);
+		$res = $client->request('GET', 'http://www.textoatodos.com/sistema/wss/smsapi16.php?usuario=creamosheiner&password=8efaa3&celular='. $request->input('mobile') .'&mensaje=Tu codigo de verificacion el corral es: 1234&lada=3', []);
+
+		// echo dd($res);
 
 		// echo $res->getStatusCode();
-		// "200"
+		// // "200"
 		// echo $res->getHeader('content-type');
 		// 'application/json; charset=utf8'
 		return $res->getBody();
