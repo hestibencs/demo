@@ -13,10 +13,10 @@
 <section class="shopping-cart container invoice-print">
     <div class="row">
         <div class="col-lg-4">
-        	<a href="{{ url('/') }}" target="_blank">Tienda</a>
-        	<a href="{{ url('print/invoice') }}" target="_blank">Imprimir Factura</a>
-        	<a href="{{ url('print/order') }}" target="_blank">Imprimir Orden</a>
-			<a href="{{ url('order') }}" target="_blank">Confirmar Orden</a>
+        	<a href="{{ url('/') }}" target="_blank">Tienda</a></br>
+        	<a href="{{ url('print/invoice') }}" target="_blank">Imprimir Factura</a></br>
+        	<a href="{{ url('print/order') }}" target="_blank">Imprimir Orden</a></br>
+			<a href="{{ url('order') }}" target="_blank">Confirmar Orden</a></br>
         </div>
     </div><!--/row -->
 </section><!--/shopping-cart-->
